@@ -51,8 +51,6 @@ C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\eTickets.Web.TagHelpers.input.cache
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\eTickets.Web.TagHelpers.output.cache
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\eTickets.Web.RazorCoreGenerate.cache
-C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -69,3 +67,12 @@ C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\ref\eTickets.Web.dll
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\bin\Debug\net5.0\Humanizer.dll
 C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Actors\Index.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Producers\Index.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Cinemas\Index.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Movies\Index.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Actors\Create.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Actors\Details.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Actors\Edit.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Actors\Delete.cshtml.g.cs
+C:\Users\USER\Desktop\Kurslar\Udemy\eTickets\eTickets\eTickets.Web\obj\Debug\net5.0\Razor\Views\Shared\NotFound.cshtml.g.cs

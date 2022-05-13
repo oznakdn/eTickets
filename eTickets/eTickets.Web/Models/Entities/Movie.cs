@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eTickets.Web.Models
+namespace eTickets.Web.Models.Entities
 {
     public class Movie:BaseEntity
     {
