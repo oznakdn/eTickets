@@ -1,8 +1,6 @@
-﻿using eTickets.Web.Data;
-using eTickets.Web.Entities;
+﻿using eTickets.Web.Models.Entities;
 using eTickets.Web.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace eTickets.Web.Controllers
@@ -22,9 +20,9 @@ namespace eTickets.Web.Controllers
             return View(data);
         }
 
-        public async Task<IActionResult>Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var actorDetails =await _actorService.GetByIdAsync(id);
+            var actorDetails = await _actorService.GetByIdAsync(id);
             if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
@@ -38,7 +36,7 @@ namespace eTickets.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("FullName,ProfilePictureUrl,Bio")] Actor actor)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(actor);
             }
@@ -57,12 +55,9 @@ namespace eTickets.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id,[Bind("Id,FullName,ProfilePictureUrl,Bio")] Actor actor)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureUrl,Bio")] Actor actor)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(actor);
-            }
+            if (!ModelState.IsValid) return View(actor);
 
             await _actorService.UpdateAsync(id,actor);
             return RedirectToAction(nameof(Index));
@@ -76,7 +71,7 @@ namespace eTickets.Web.Controllers
             return View(actor);
         }
 
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var actorDetails = await _actorService.GetByIdAsync(id);

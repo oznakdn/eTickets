@@ -1,5 +1,4 @@
-﻿using eTickets.Web.Entities;
-using eTickets.Web.Models.Entities;
+﻿using eTickets.Web.Models.Base;
 using eTickets.Web.Models.Enums;
 using System;
 using System.Collections.Generic;
@@ -7,8 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eTickets.Web.Models.Entities
 {
-    public class Movie:BaseEntity
+    public class Movie:IEntityBase
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }

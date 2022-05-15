@@ -1,4 +1,4 @@
-﻿@model eTickets.Web.Entities.Actor
+﻿@model eTickets.Web.Models.Entities.Actor
 
 @{
     ViewData["Title"] = "Update actor";
@@ -46,16 +46,13 @@
     <script>
 
         $(document).ready(function () {
-
             var output = document.getElementById('ProfilePicturePreview');
             output.src = $("#ProfilePictureUrl").val();
         });
-
         $("#ProfilePictureUrl").on("change", function () {
             var output = document.getElementById('ProfilePicturePreview');
             output.src = $(this).val();
         });
-
     </script>
 }
 

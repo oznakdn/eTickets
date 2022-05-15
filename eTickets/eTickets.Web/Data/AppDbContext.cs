@@ -1,5 +1,4 @@
-﻿using eTickets.Web.Entities;
-using eTickets.Web.Models;
+﻿using eTickets.Web.Models;
 using eTickets.Web.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 

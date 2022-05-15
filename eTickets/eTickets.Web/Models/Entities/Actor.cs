@@ -1,11 +1,13 @@
-﻿using eTickets.Web.Models.Entities;
+﻿using eTickets.Web.Models.Base;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace eTickets.Web.Entities
+namespace eTickets.Web.Models.Entities
 {
-    public class Actor:BaseEntity
+    public class Actor:IEntityBase
     {
+
+        public int Id { get; set; }
 
         [Display(Name ="Profile Picture")]
         [Required(ErrorMessage ="Profile Picture is required!")]
@@ -14,7 +16,7 @@ namespace eTickets.Web.Entities
 
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "Full Name is required!")]
-        [StringLength(50,MinimumLength =3,ErrorMessage ="Full Name must be between 3 and 5 chars!")]
+        [StringLength(50,MinimumLength =3,ErrorMessage ="Full Name must be between 3 and 50 chars!")]
         public string FullName { get; set; }
 
         [Display(Name = "Biography")]
@@ -23,7 +25,5 @@ namespace eTickets.Web.Entities
 
 
         public List<Actor_Movie> Actors_Movies { get; set; }
-
-
     }
 }
