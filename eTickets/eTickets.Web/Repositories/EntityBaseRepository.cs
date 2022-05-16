@@ -2,7 +2,10 @@
 using eTickets.Web.Models.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace eTickets.Web.Repositories
@@ -18,6 +21,13 @@ namespace eTickets.Web.Repositories
 
 
         public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
+
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            query = includeProperties.Aggregate(query, (current, includeProperties) => current.Include(includeProperties));
+            return await query.ToListAsync();
+        }
 
         public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         public async Task AddAsync(T entity)
@@ -41,5 +51,7 @@ namespace eTickets.Web.Repositories
             await _context.SaveChangesAsync();
 
         }
+
+        
     }
 }
