@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace eTickets.Web.Models.Cart
 {
@@ -79,6 +80,14 @@ namespace eTickets.Web.Models.Cart
         }
 
         public double GetShoppingCartTotal()=> _context.ShoppingCartItems.Where(x => x.ShoppingCartId == ShoppingCartId).Select(n => n.Movie.Price * n.Amount).Sum();
-         
+
+        public async Task ClearShoppingCartAsync()
+        {
+            var items=await _context.ShoppingCartItems.Where(x => x.ShoppingCartId == ShoppingCartId).Include(n => n.Movie).ToListAsync();
+            _context.ShoppingCartItems.RemoveRange(items);
+            await _context.SaveChangesAsync();
+        }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using eTickets.Web.Models.Base;
+using System.Collections.Generic;
 
 namespace eTickets.Web.Models.Entities
 {
