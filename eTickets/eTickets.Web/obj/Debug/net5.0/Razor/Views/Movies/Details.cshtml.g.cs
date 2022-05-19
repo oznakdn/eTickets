@@ -27,7 +27,7 @@ using eTickets.Web.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2cc90b2d8c2ef75d4b33ace792b39893b787d2b3", @"/Views/Movies/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57578cddc670772255cd0462808b56298a69b522", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cc133ec80a0fb6c27f21b568bb67f727b6a3f22d", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Movies_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<eTickets.Web.Models.Entities.Movie>
     #nullable disable

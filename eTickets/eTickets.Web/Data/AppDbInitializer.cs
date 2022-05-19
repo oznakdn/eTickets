@@ -1,17 +1,22 @@
 ﻿using eTickets.Web.Models;
 using eTickets.Web.Models.Entities;
 using eTickets.Web.Models.Enums;
+using eTickets.Web.Models.Static;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace eTickets.Web.Data
 {
     public class AppDbInitializer
     {
+
+        // Entities Seeding
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
@@ -19,7 +24,7 @@ namespace eTickets.Web.Data
             context.Database.EnsureCreated();
 
             // Cinema
-            if(!context.Cinemas.Any())
+            if (!context.Cinemas.Any())
             {
                 context.Cinemas.AddRange(new List<Cinema>()
                 {
@@ -144,7 +149,7 @@ namespace eTickets.Web.Data
             {
                 context.Movies.AddRange(new List<Movie>()
                 {
-                    
+
                     new Movie
                     {
                         Name="Ghost",
@@ -235,11 +240,66 @@ namespace eTickets.Web.Data
                         ActorId=4,
                         MovieId=4
                     }
-                   
+
                 });
 
                 context.SaveChanges();
             }
+
+        }
+
+        // User and Role Seeding
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
+
+
+            // Roles
+            var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+
+
+            if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+            // Users
+            var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+            string adminUserEmail = "admin@etickets.com";
+            var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+            if(adminUser == null)
+            {
+                var newAdminUser = new ApplicationUser
+                {
+                    FullName="Admin User",
+                    UserName="admin-user",
+                    Email= adminUserEmail,
+                    EmailConfirmed=true,
+                };
+                await userManager.CreateAsync(newAdminUser,"Coding@1234?");
+                await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+            }
+
+           
+            string appUserEmail = "user@etickets.com";
+            var appUser = await userManager.FindByEmailAsync(appUserEmail);
+            if (appUser == null)
+            {
+                var newAppUser = new ApplicationUser
+                {
+                    FullName = "Application User",
+                    UserName = "app-user",
+                    Email = appUserEmail,
+                    EmailConfirmed = true,
+                };
+                await userManager.CreateAsync(newAppUser, "Coding@1234?");
+                await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+            }
+
+
+
+
 
         }
     }

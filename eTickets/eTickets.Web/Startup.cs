@@ -1,9 +1,12 @@
 using eTickets.Web.Data;
 using eTickets.Web.Models.Cart;
+using eTickets.Web.Models.Entities;
 using eTickets.Web.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,21 +28,28 @@ namespace eTickets.Web
         {
             services.AddControllersWithViews();
 
+            /* Database configuration */
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
 
+            /* Athentication and authorization configuration */
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+            });
+
+            /* Service configuration */
             services.AddScoped<IActorService, ActorService>();
             services.AddScoped<IProducerService, ProducerService>();
             services.AddScoped<ICinemaService, CinemaService>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IOrderService, OrderService>();
 
-
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
-
-            services.AddSession();
-
-
 
         }
 
@@ -63,6 +73,10 @@ namespace eTickets.Web
 
             app.UseSession();
 
+
+            /* Athentication & authorization */
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -75,6 +89,8 @@ namespace eTickets.Web
 
             // Seed database
             AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+
         }
     }
 }

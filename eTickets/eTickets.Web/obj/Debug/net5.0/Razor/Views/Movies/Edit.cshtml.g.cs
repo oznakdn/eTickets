@@ -34,7 +34,7 @@ using eTickets.Web.Models.Enums;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7591ec55cfe252378d50e3b40bae8096ca3feea3", @"/Views/Movies/Edit.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57578cddc670772255cd0462808b56298a69b522", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cc133ec80a0fb6c27f21b568bb67f727b6a3f22d", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Movies_Edit : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<eTickets.Web.Models.ViewModels.EditMovieVM>
     #nullable disable

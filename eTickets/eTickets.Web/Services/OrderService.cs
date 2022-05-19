@@ -15,15 +15,24 @@ namespace eTickets.Web.Services
             _context = context;
         }
 
-        public async Task<List<Order>> GetOrdersByUserIdAsync(string userId) => await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Where(x => x.UserId == userId).ToListAsync();
-        
+        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
+        {
+            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Include(x=>x.User).ToListAsync();
 
+            if (userRole != "Admin")
+            {
+                orders = orders.Where(x => x.UserId == userId).ToList();
+            }
+            return orders;
+
+
+        }
         public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAdress)
         {
             var order = new Order
             {
-               UserId=userId,
-               Email=userEmailAdress,
+                UserId = userId,
+                Email = userEmailAdress,
             };
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();

@@ -1,10 +1,14 @@
 ﻿using eTickets.Web.Models.Entities;
+using eTickets.Web.Models.Static;
 using eTickets.Web.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace eTickets.Web.Controllers
 {
+
+    [Authorize(Roles =UserRoles.Admin)]
     public class ActorsController : Controller
     {
         private readonly IActorService _actorService;
@@ -14,11 +18,14 @@ namespace eTickets.Web.Controllers
             _actorService = actorService;
         }
 
+        [AllowAnonymous] // Herkes kullanabilir. Authorize disinda kalir
         public async Task<IActionResult> Index()
         {
             var data = await _actorService.GetAllAsync();
             return View(data);
         }
+
+        [AllowAnonymous] // Herkes kullanabilir. Authorize disinda kalir
 
         public async Task<IActionResult> Details(int id)
         {
